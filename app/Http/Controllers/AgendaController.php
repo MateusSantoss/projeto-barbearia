@@ -61,11 +61,13 @@ class AgendaController extends Controller
             'horarios.*',
             'horarios.id as horario_id',
             'datas.id as data_id',
-            'datas.*'
+            'datas.*',
+
         )
             ->join('datas', 'horarios.data_id', '=', 'datas.id')
             ->orderBy('datas.data', 'desc')
             ->get();
+
 
         $dataAtual = Carbon::now();
 

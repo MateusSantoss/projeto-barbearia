@@ -32,46 +32,47 @@
 
         <!-- Preloader -->
         @if (session('success'))
-        <div id="success-message" class="alert alert-success text-center text-white">
-            {{ session('success') }}
-        </div>
-        @else @if (session('error'))
-        <div id="error-message" class="alert alert-danger text-center text-white">
-            {{ session('error') }}
-        </div>
-        @endif
+            <div id="success-message" class="alert alert-success text-center text-white">
+                {{ session('success') }}
+            </div>
+        @else
+            @if (session('error'))
+                <div id="error-message" class="alert alert-danger text-center text-white">
+                    {{ session('error') }}
+                </div>
+            @endif
         @endif
 
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var successMessage = document.getElementById('success-message');
-            var errorMessage = document.getElementById("error-message")
+            document.addEventListener('DOMContentLoaded', function() {
+                var successMessage = document.getElementById('success-message');
+                var errorMessage = document.getElementById("error-message")
 
-            if (errorMessage) {
-                setTimeout(function() {
-                    errorMessage.style.transition = "opacity 1s";
-                    errorMessage.style.opacity = "0";
+                if (errorMessage) {
                     setTimeout(function() {
-                            errorMessage.remove();
-                        },
-                        1000
+                        errorMessage.style.transition = "opacity 1s";
+                        errorMessage.style.opacity = "0";
+                        setTimeout(function() {
+                                errorMessage.remove();
+                            },
+                            1000
                         ); // Tempo adicional para garantir que o elemento seja removido após a transição
-                }, 3000); // 3000 milissegundos (3 segundos)
-            }
+                    }, 3000); // 3000 milissegundos (3 segundos)
+                }
 
 
-            if (successMessage) {
-                setTimeout(function() {
-                    successMessage.style.transition = "opacity 1s";
-                    successMessage.style.opacity = "0";
+                if (successMessage) {
                     setTimeout(function() {
-                            successMessage.remove();
-                        },
-                        1000
+                        successMessage.style.transition = "opacity 1s";
+                        successMessage.style.opacity = "0";
+                        setTimeout(function() {
+                                successMessage.remove();
+                            },
+                            1000
                         ); // Tempo adicional para garantir que o elemento seja removido após a transição
-                }, 3000); // 3000 milissegundos (3 segundos)
-            }
-        });
+                    }, 3000); // 3000 milissegundos (3 segundos)
+                }
+            });
         </script>
 
         <!-- Navbar -->
@@ -128,7 +129,6 @@
 
         <!-- Main Sidebar Container -->
         @component('components.sidebar')
-
         @endcomponent
 
         <!-- Content Wrapper. Contains page content -->
@@ -157,8 +157,8 @@
                                                 <i class="far fa-calendar-alt" for="reservation"></i>
                                             </span>
                                         </div>
-                                        <input type="date" name="data" class="form-control float-right" id="reservation"
-                                            min="{{ date ('Y-m-d')}}">
+                                        <input type="date" name="data" class="form-control float-right"
+                                            id="reservation" min="{{ date('Y-m-d') }}">
                                     </div>
                                     <!-- /.input group -->
                                 </div>
@@ -194,33 +194,40 @@
                             <div class="card-body">
                                 <div class="row justify-content-center">
                                     <label for="seg" class="ml-2">Seg
-                                        <input type="checkbox" name="seg" id="seg" class="ml-2" data-bootstrap-switch>
+                                        <input type="checkbox" name="seg" id="seg" class="ml-2"
+                                            data-bootstrap-switch>
 
                                     </label>
                                     <label for="ter" class="ml-2">Ter
-                                        <input type="checkbox" name="ter" class="ml-2" id="ter" data-bootstrap-switch>
+                                        <input type="checkbox" name="ter" class="ml-2" id="ter"
+                                            data-bootstrap-switch>
 
                                     </label>
                                     <label for="qua" class="ml-2">Qua
-                                        <input type="checkbox" name="qua" class="ml-2" id="qua" data-bootstrap-switch>
+                                        <input type="checkbox" name="qua" class="ml-2" id="qua"
+                                            data-bootstrap-switch>
 
                                     </label>
                                     <label for="qui" class="ml-2">Qui
-                                        <input type="checkbox" name="qui" id="qui" class="ml-2" data-bootstrap-switch>
+                                        <input type="checkbox" name="qui" id="qui" class="ml-2"
+                                            data-bootstrap-switch>
 
                                     </label>
                                     <label for="sex" class="ml-2">Sex
-                                        <input type="checkbox" name="sex" id="sex" class="ml-2" data-bootstrap-switch>
+                                        <input type="checkbox" name="sex" id="sex" class="ml-2"
+                                            data-bootstrap-switch>
 
 
                                     </label>
                                     <label for="sab" class="ml-2">Sab
-                                        <input type="checkbox" name="sab" class="ml-2" id="sab" data-bootstrap-switch>
+                                        <input type="checkbox" name="sab" class="ml-2" id="sab"
+                                            data-bootstrap-switch>
 
 
                                     </label>
                                     <label for="dom" class="ml-2">Dom
-                                        <input type="checkbox" class="ml-2" name="dom" id="dom" data-bootstrap-switch>
+                                        <input type="checkbox" class="ml-2" name="dom" id="dom"
+                                            data-bootstrap-switch>
 
                                     </label>
                                 </div>
@@ -256,7 +263,8 @@
                             <h3 class="card-title">Horários de hoje</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
@@ -266,49 +274,54 @@
 
                                 <tbody>
                                     @foreach ($horariosHoje as $horario)
+                                        <tr>
+                                            <td>{{ substr($horario->hora, 0, 5) }}</td>
 
-                                    <tr>
-                                        <td>{{ substr($horario->hora, 0, 5); }}</td>
+                                            <td class="text-right py-0 align-middle">
+                                                <div class="btn-group btn-group-sm">
+                                                    @if ($horario['user_id'] != null)
+                                                        <span class="bg-success m-2 px-2 rounded-5">
+                                                            <a href="/clientes">Horário reservado</a>
+                                                        </span>
+                                                    @endif
 
-                                        <td class="text-right py-0 align-middle">
-                                            <div class="btn-group btn-group-sm">
+                                                    <a class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#modal_exclui_horarios_hoje"></data><i
+                                                            class="fas fa-trash"></i></a>
+                                                    <!-- Button trigger modal -->
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="modal_exclui_horarios_hoje"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
 
-
-                                                <a class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#modal_exclui_horarios_hoje"></data><i
-                                                        class="fas fa-trash"></i></a>
-                                                <!-- Button trigger modal -->
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="modal_exclui_horarios_hoje" tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h5 class="text-danger text-bold text-center">Tem
-                                                                    certeza que deseja excluir? Esta ação não poderá ser
-                                                                    desfeita</h5>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">cancelar</button>
-                                                                <a type="button" href="/delete/{{$horario->id, $horario->data_id}}"
-                                                                    class="btn btn-danger">sim</a>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h5 class="text-danger text-bold text-center">Tem
+                                                                        certeza que deseja excluir? Esta ação não poderá
+                                                                        ser
+                                                                        desfeita</h5>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">cancelar</button>
+                                                                    <a type="button"
+                                                                        href="/delete/{{ $horario->id, $horario->data_id }}"
+                                                                        class="btn btn-danger">sim</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                            </td>
+                                        </tr>
                                     @endforeach
 
 
@@ -327,7 +340,8 @@
 
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
@@ -335,47 +349,71 @@
                         <div class="card-body p-0">
                             <table class="table">
                                 <tbody>
+                                    <!--recupera a data atual-->
+                                    @php
+                                        use Carbon\Carbon;
+                                        $dataAtual = Carbon::now();
+                                    @endphp
                                     @foreach ($todosHorarios as $horario)
-                                    <tr>
-                                        <td>{{ date ('d-m-Y', strtotime($horario['data']))}} |
-                                            {{substr($horario['hora'], 0, 5) }} </td>
-                                        <td class="text-right py-0 align-middle">
-                                            <div class="btn-group btn-group-sm">
+                                        <!--Exibi apenas os horários que não são os de hoje -->
+                                        @if ($horario['data'] != $dataAtual->toDateString())
+                                            <tr>
+                                                <td>
+                                                    {{ date('d-m-Y', strtotime($horario['data'])) }} |
+                                                    {{ substr($horario['hora'], 0, 5) }}
 
-                                                <a class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#modal_exclui_horarios"></data><i
-                                                        class="fas fa-trash"></i></a>
+                                                </td>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="modal_exclui_horarios" tabindex="-1"
-                                                    aria-labelledby="modal_exlui_horarios" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
 
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h5 class="text-danger text-bold text-center">Tem
-                                                                    certeza que deseja excluir? Esta ação não poderá ser
-                                                                    desfeita</h5>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">cancelar</button>
-                                                                <a type="button" href="/delete/{{$horario->horario_id, $horario->data_id}}"
-                                                                    class="btn btn-danger">sim</a>
+                                                <td class="text-right py-0 align-middle">
+                                                    <div class="btn-group btn-group-sm">
+                                                        @if ($horario['user_id'] != null)
+                                                            <span class="bg-success m-2 px-2 rounded-5">
+                                                                <a href="/clientes">Horário reservado</a>
+                                                            </span>
+                                                        @endif
+                                                        <a class="btn btn-danger" data-toggle="modal"
+                                                            data-target="#modal_exclui_horarios"></data><i
+                                                                class="fas fa-trash"></i></a>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="modal_exclui_horarios"
+                                                            tabindex="-1" aria-labelledby="modal_exlui_horarios"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h5 class="text-danger text-bold text-center">
+                                                                            Tem certeza que deseja excluir?
+                                                                            Esta ação não
+                                                                            poderá
+                                                                            ser
+                                                                            desfeita
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-dismiss="modal">cancelar</button>
+                                                                        <a type="button"
+                                                                            href="/delete/{{ $horario->horario_id, $horario->data_id }}"
+                                                                            class="btn btn-danger">sim</a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
 
 
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
 
                                 </tbody>
@@ -414,13 +452,13 @@
             </footer>
             <!--date picker-->
             <script>
-            function setActiveClass() {
-                var homeElement = document.getElementById('addHorario');
-                if (homeElement) {
-                    homeElement.classList.add("active");
+                function setActiveClass() {
+                    var homeElement = document.getElementById('addHorario');
+                    if (homeElement) {
+                        homeElement.classList.add("active");
+                    }
                 }
-            }
-            setActiveClass();
+                setActiveClass();
             </script>
 
 
@@ -433,7 +471,7 @@
             <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
             <script>
-            $.widget.bridge('uibutton', $.ui.button)
+                $.widget.bridge('uibutton', $.ui.button)
             </script>
             <!-- Bootstrap 4 -->
             <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
