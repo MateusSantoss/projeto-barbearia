@@ -5,6 +5,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\UserController;
 use App\Models\Horario;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [HomeController::class, 'load'])->middleware('auth')->name('paginaIncial');
+Route::get('/home', function () {
     return view('home');
-})->middleware('auth');
+})->name('home');
 Route::get('/registro', function () {
     return view('registro');
 });

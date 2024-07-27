@@ -7,7 +7,8 @@
     <title>AdminLTE 3 | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -27,7 +28,6 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -38,7 +38,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link text-white" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
 
 
@@ -86,96 +87,69 @@
 
         <!-- Main Sidebar Container -->
         @component('components.sidebar')
-
         @endcomponent
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div><!-- /.col -->
+            <section style=" background: url({{asset('assets/imgs/paginaInicialClientes/banner.jpg')}}); width: 100;" class="p-2">
+                <article class="mt-5" style="width: 100%;">
+                    <div class="card p-3 text-white justify-content-center" style="background: rgba(5, 6, 5, 0.5);">
 
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-black ">
-                                <div class="inner">
-                                    <h3>150</h3>
-
-                                    <p> Quant. de Agendamento</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-bag text-white"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Saber Mais <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure, impedit
+                                nobis, quaerat voluptatibus aperiam recusandae pariatur itaque architecto quae dolor
+                                libero totam quia, excepturi fugiat dolores? Repellendus consequatur tempora similique!
+                            </p>
+                            <a href="#" class="btn btn-primary">Faça um agendamento</a>
                         </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-black">
-                                <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                                    <p>Rendimento</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars text-white"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Saber Mais <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-black ">
-                                <div class="inner">
-                                    <h3>44</h3>
-
-                                    <p>Usuários Cadastrados</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add text-white"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Saber Mais <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-black">
-                                <div class="inner ">
-                                    <h3>65</h3>
-
-                                    <p>Frequência de Agendamento</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph text-white"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Saber Mais <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
                     </div>
-                    <!-- /.row -->
-                    <!-- Main row -->
 
-                    <!-- /.row (main row) -->
-                </div><!-- /.container-fluid -->
+                </article>
             </section>
-            <!-- /.content -->
+
+            <div>
+                <h1 class="ml-4">Cortes</h1>
+                <div class="row justify-content-around">
+                    <div class="card col-12 col-sm-4 col-md-4 col-lg-3 " style="width: 18rem;">
+                        <img src="{{ asset('assets/imgs/paginaInicialClientes/buzzcut.jpg') }}"
+                            class="card-img-top imd-fluid" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">buzzed</h5>
+                            <p class="card-text">Preço: 30R$</p>
+                            <a href="#" class="btn btn-primary">Faça um agendamento</a>
+                        </div>
+                    </div>
+
+                    <div class="card col-12 col-12 col-sm-4 col-md-4 col-lg-3" style="width: 18rem;">
+                        <img src="{{ asset('assets/imgs/paginaInicialClientes/midfade.jpg') }}"
+                            class="card-img-top img-fluid" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Mid fade</h5>
+                            <p class="card-text">Preço: 35$</p>
+                            <a href="#" class="btn btn-primary">Faça um agendamento</a>
+                        </div>
+                    </div>
+
+                    <div class="card col-12 col-12 col-sm-4 col-md-4 col-lg-3" style="width: 18rem;">
+                        <img src="{{ asset('assets/imgs/paginaInicialClientes/old-money-haircut.jpg') }}"
+                            class="card-img-top imd-fluid" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Old money</h5>
+                            <p class="card-text">Preço: 30R$</p>
+                            <a href="#" class="btn btn-primary">Faça um agendamento</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            </section>
+
+
+
+
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
